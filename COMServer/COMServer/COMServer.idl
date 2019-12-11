@@ -1,0 +1,37 @@
+// COMServer.idl: IDL-Quelle für COMServer
+//
+
+// Diese Datei wird mit dem MIDL-Tool bearbeitet,
+// generieren die Typbibliothek (COMServer.tlb) und den Marshallingcode.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(f0eabf71-ed7a-44eb-85c9-8acfb5025ba9),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IHelloWorld : IDispatch
+{
+  [id(1)] HRESULT ShowMessage([in] BSTR name);
+};
+[
+	uuid(b6c656cd-dadc-43f5-bb6d-19ab9b3896ca),
+	version(1.0),
+]
+library COMServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(aad840a7-b698-4b1b-a5b6-85d50b3ba629)
+	]
+	coclass HelloWorld
+	{
+		[default] interface IHelloWorld;
+	};
+};
+
+import "shobjidl.idl";
